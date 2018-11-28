@@ -1,0 +1,149 @@
+@import (css) url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
+
+@import "./_globals";
+@import "./components/_input";
+
+* {
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: @lightGrey;
+}
+
+h2 { 
+  border-bottom: 1px solid @grey;
+  width: 100%;
+  padding-bottom: @globalSpace / 2;
+}
+
+.wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+}
+
+.row__content { 
+  flex-direction: row;
+}
+
+.app {
+  &__header {
+    border-top: @globalSpace solid @darkBlue;
+    background-color: @blue;
+    color: @white;
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+
+  &__content {
+    padding: 2 * @globalSpace 0;
+  }
+
+  &__spinner {
+    display: flex;
+    flex: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.7);
+
+    .spinner {
+      display: inline-block;
+      width: 64px;
+      height: 64px;
+      &:after {
+        content: " ";
+        display: block;
+        width: 46px;
+        height: 46px;
+        margin: 1px;
+        border-radius: 50%;
+        border: 5px solid @darkBlue;
+        border-color: @darkBlue transparent @darkBlue transparent;
+        animation: spinner 1.2s linear infinite;
+
+      }
+    }
+  }
+}
+
+.whiteContent { 
+  background-color: @white;
+  margin-top: 2 * @globalSpace;
+  box-shadow: 0 0 @globalSpace 1px @grey;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.form {
+  &__submit {
+    padding: 2 * @globalSpace 4 * @globalSpace;
+    border:0;
+    background-color: @orange;
+    color: @white;
+    font-size: 1rem;
+    margin: @globalSpace auto;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.noMargin {
+  margin:0;
+}
+
+.successView {
+  &:extend(.whiteContent);
+  
+  background-color: @lightGreen;
+
+  h3 {
+    font-size: 1.5rem;
+    color: @green;
+    margin: @globalSpace 0 0;
+  }
+  h3, p {
+    flex: 1;
+  }
+}
+
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@import "./_rwd";

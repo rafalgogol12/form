@@ -1,0 +1,76 @@
+h2 {
+  margin: 0 0 0px;
+}
+
+.row {
+  padding: @globalSpace / 2 @globalSpace;
+  max-width: 100%;
+  width: 100%;
+}
+
+.separateText {
+  max-width: 100%;
+}
+
+.inputField {
+  &__extraSmallInput {
+     max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) { 
+  .inputField {
+    flex-direction: row;
+
+    &__group {
+      input { 
+        max-width: 25%;
+      }
+    }
+    .event__fee {
+      max-width: 50%;
+    }
+    &__label {
+      max-width: 15%;
+      width: 100%;
+    }
+    &__input {
+      max-width: 65%;
+      width: 100%;
+    }
+    &__picker {
+      max-width: 65%;
+    }
+    &__smallInput {
+      max-width: 10%;
+      width: 100%;
+    }
+    &__extraSmallInput {
+      max-width: 5%;
+      width: 100%;
+    }
+    .separateText { 
+      flex: inherit
+    }
+    .validation {
+      &__error {
+        margin: 0 @globalSpace;
+      }
+    }
+  }
+  .informSpan {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 992px) {
+  h2 {
+    margin: 0 0 @globalSpace 0;
+  }
+
+  .row {
+    padding: 2 * @globalSpace 4 * @globalSpace;
+    max-width: 1200px;
+    width: 100%;
+  }
+}
