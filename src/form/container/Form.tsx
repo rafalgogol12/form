@@ -5,7 +5,7 @@ import CoordinatorComponent from "../components/CoordinatorComponent";
 import TimeComponent from "../components/TimeComponent";
 import { connect } from 'react-redux';
 import { ApplicationState } from '../../reducers';
-import { EventProps, EventObject, MockProps, Coordinator } from '../../types/Types';
+import { EventProps, EventObject, MockProps, Coordinator, TitleObject } from '../../types/Types';
 import { saveToForm, fetchCategories } from '../action';
 import SubmitButton from '../components/SubmitButton';
 import Spinner from '../../common/Spinner';
@@ -58,7 +58,7 @@ class Form extends React.Component<FormAllProps> {
             newEvent={newEvent}
             mockData={mockData}
             callbackToSave={(name: string, value: any) => this.callbackToSave(name, value)} />
-          <SubmitButton />
+          <SubmitButton disabled={titleValidStatement(mockData, newEvent)}/>
         </form>
       </div>
     )
@@ -103,6 +103,10 @@ class Form extends React.Component<FormAllProps> {
     console.log(dataToSend)
   }
 }
+
+export function titleValidStatement(mockData: MockProps, newEvent: EventProps) {
+  return mockData.titles.map((t: TitleObject) => t.title).includes(newEvent.title)
+} 
 
 function mapStateToProps(state: ApplicationState) {
   return { newEvent: state.newEvent, mockData: state.mockData }

@@ -4,15 +4,15 @@ import { InputProps } from '../../../types/Types';
 
 export default class InputField extends React.Component<InputProps> {
   render() {
-    const { 
-      labelName, 
-      name, 
-      maxLength, 
-      isRequired = false, 
-      placeholder, 
-      value = "", 
-      callback, 
-      extraText, 
+    const {
+      labelName,
+      name,
+      maxLength,
+      isRequired = false,
+      placeholder,
+      value = "",
+      callback,
+      extraText,
       validationStatement,
       type = "text",
       validationError } = this.props;
@@ -28,12 +28,12 @@ export default class InputField extends React.Component<InputProps> {
           placeholder={placeholder}
           maxLength={maxLength}
           required={isRequired}
-          className={`inputField__input ${extraText ? "inputField__smallInput": null}`}
+          className={`inputField__input ${extraText ? "inputField__smallInput" : null}`}
           value={value}
           type={type}
           onChange={(newValue) => callback(name, newValue)}
         />
-        {extraText && 
+        {extraText &&
           <p>{extraText}</p>
         }
         {validationStatement &&

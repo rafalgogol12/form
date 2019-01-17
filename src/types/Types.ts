@@ -92,3 +92,7 @@ export interface TitleObject {
   id: number
   title: string
 }
+
+export interface ButtonProps {
+  disabled: boolean
+}

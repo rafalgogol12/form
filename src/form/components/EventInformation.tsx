@@ -3,17 +3,16 @@ import * as React from 'react';
 import InputField from './inputTypes/InputField';
 import TextAreaField from "./inputTypes/textAreaField";
 import SelectField from "./inputTypes/SelectField";
-import { FormProps } from '../container/Form';
+import { FormProps, titleValidStatement } from '../container/Form';
 import PaymentField from './inputTypes/PaymentField';
-import { TitleObject } from '../../types/Types';
 import NumberField from './inputTypes/NumberField';
 import { maxDescriptionLength } from '../../utils/globals';
 
 export default class EventInformation extends React.Component<FormProps> {
   render() {
-    const { 
-      newEvent, 
-      callbackToSave, 
+    const {
+      newEvent,
+      callbackToSave,
       mockData } = this.props;
 
     return (
@@ -27,7 +26,7 @@ export default class EventInformation extends React.Component<FormProps> {
               placeholder={"Make it short and clear"}
               isRequired
               value={newEvent.title}
-              validationStatement={mockData.titles.map((t: TitleObject) => t.title).includes(newEvent.title)}
+              validationStatement={titleValidStatement(mockData, newEvent)}
               validationError={"This title already exist"}
               callback={(name: string, item: any) => callbackToSave(name, item)}
             />
@@ -58,7 +57,7 @@ export default class EventInformation extends React.Component<FormProps> {
               inputValue={newEvent.event_fee}
               callback={(name: string, item: any) => callbackToSave(name, item)}
             />
-             <NumberField
+            <NumberField
               labelName={"Reward"}
               name={"reward"}
               placeholder={"Number"}
