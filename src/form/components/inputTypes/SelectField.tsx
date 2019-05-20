@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { InputProps, Responsible } from '../../../types/Types';
+import { InputProps, Responsible, iCategory } from '../../../types/Types';
 
 interface SelectProps extends InputProps {
-  data: Responsible[]
+  data: Responsible[] & iCategory[]
   type: string
   selectFromMock?: number
 }
@@ -31,7 +31,7 @@ export default class SelectField extends React.Component<SelectProps> {
             value={value ? value : ""}
             onChange={(newValue) => callback(name, newValue)}>
             <option value={""} disabled>{placeholder}</option>
-            {data.map((item: Responsible, index: number) => {
+            {data.map((item: Responsible & iCategory, index: number) => {
               return <option key={`${item.name}_${index}`} value={item.id}>
                 {type === "responsible" ?
                   `${item.name} ${item.lastname}`
@@ -39,7 +39,7 @@ export default class SelectField extends React.Component<SelectProps> {
                   `${item.name}`
                 }
               </option>
-            })}ś
+            })}
           </select>
         </div>
       </div>
