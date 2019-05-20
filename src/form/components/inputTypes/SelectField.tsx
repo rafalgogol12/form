@@ -31,7 +31,7 @@ export default class SelectField extends React.Component<SelectProps> {
             value={value ? value : ""}
             onChange={(newValue) => callback(name, newValue)}>
             <option value={""} disabled>{placeholder}</option>
-            {data.map((item: any, index: number) => {
+            {data.map((item: Responsible, index: number) => {
               return <option key={`${item.name}_${index}`} value={item.id}>
                 {type === "responsible" ?
                   `${item.name} ${item.lastname}`

@@ -5,7 +5,7 @@ import CoordinatorComponent from "../components/CoordinatorComponent";
 import TimeComponent from "../components/TimeComponent";
 import { connect } from 'react-redux';
 import { ApplicationState } from '../../reducers';
-import { EventProps, EventObject, MockProps, Coordinator, TitleObject } from '../../types/Types';
+import { EventProps, EventObject, MockProps, Coordinator, TitleObject, iTarget } from '../../types/Types';
 import { saveToForm, fetchCategories } from '../action';
 import SubmitButton from '../components/SubmitButton';
 import Spinner from '../../common/Spinner';
@@ -48,7 +48,7 @@ class Form extends React.Component<FormAllProps> {
           <EventInformation
             newEvent={newEvent}
             mockData={mockData}
-            callbackToSave={(name: string, value: any, isNumber: boolean) => this.callbackToSave(name, value, isNumber)} />
+            callbackToSave={(name: string, value: React.FormEvent<HTMLInputElement> | Event | iTarget, isNumber: boolean) => this.callbackToSave(name, value, isNumber)} />
           <CoordinatorComponent
             newEvent={newEvent}
             mockData={mockData}
@@ -58,7 +58,7 @@ class Form extends React.Component<FormAllProps> {
             newEvent={newEvent}
             mockData={mockData}
             callbackToSave={(name: string, value: any) => this.callbackToSave(name, value)} />
-          <SubmitButton disabled={titleValidStatement(mockData, newEvent)}/>
+          <SubmitButton disabled={titleValidStatement(mockData.titles, newEvent)}/>
         </form>
       </div>
     )
@@ -71,7 +71,7 @@ class Form extends React.Component<FormAllProps> {
     saveToForm({ ...newEvent, [name]: value })
   }
 
-  callbackToSaveObject(name: string, item: any) {
+  callbackToSaveObject(name: string, item: iTarget) {
     const { newEvent, saveToForm, mockData } = this.props
     const id = Number(item.target.value)
     const responsible = findUser(mockData.responsibles, id)
@@ -104,8 +104,8 @@ class Form extends React.Component<FormAllProps> {
   }
 }
 
-export function titleValidStatement(mockData: MockProps, newEvent: EventProps) {
-  return mockData.titles.map((t: TitleObject) => t.title).includes(newEvent.title)
+export function titleValidStatement(titles: TitleObject[], newEvent: EventProps) {
+  return titles.map((t: TitleObject) => t.title).includes(newEvent.title)
 } 
 
 function mapStateToProps(state: ApplicationState) {

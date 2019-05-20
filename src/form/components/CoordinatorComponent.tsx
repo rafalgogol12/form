@@ -6,7 +6,7 @@ import { loggedUserId } from '../../utils/globals';
 import { FormProps } from '../container/Form';
 
 interface CoordinatorProps extends FormProps {
-  callbackToSaveObject: (name: string, value: any, toNumber?: boolean) => void
+  callbackToSaveObject: (name: string, value: Event, toNumber?: boolean) => void
 }
 
 export default class CoordinatorComponent extends React.Component<CoordinatorProps> {
@@ -30,7 +30,7 @@ export default class CoordinatorComponent extends React.Component<CoordinatorPro
               data={mockData.responsibles}
               selectFromMock={loggedUserId}
               type="responsible"
-              callback={(name: string, item: any) => callbackToSaveObject(name, item)}
+              callback={(name: string, item: Event) => callbackToSaveObject(name, item)}
             />
             <InputField
               labelName={"Email"}
@@ -39,7 +39,7 @@ export default class CoordinatorComponent extends React.Component<CoordinatorPro
               type={"email"}
               isRequired
               value={newEvent.email}
-              callback={(name: string, item: any) => callbackToSave(name, item)}
+              callback={(name: string, item: Event) => callbackToSave(name, item)}
             />
           </div>
         </div>

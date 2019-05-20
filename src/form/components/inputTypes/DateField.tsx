@@ -3,14 +3,15 @@ import * as moment from 'moment';
 
 import RadioField from './RadioField';
 import { formatDate } from '../../../utils/globals';
+import { iTarget } from '../../../types/Types';
 
 interface DateProps {
   labelName: string
   dayName: string
   hourName: string
-  dayValue: any
-  hourValue: any
-  callback: any
+  dayValue: string
+  hourValue: string
+  callback: (dayName: string, value: React.FormEvent<HTMLInputElement> | Event | iTarget) => void
   amValue: boolean
 }
 
@@ -57,13 +58,13 @@ export default class DateField extends React.Component<DateProps> {
         <RadioField
           name={"am_format"}
           value={amValue}
-          callback={(name: string, item: any) => callback(name, item)}
+          callback={(name: string, item: Event) => callback(name, item)}
         />
       </div>
     )
   }
 
-  hourMask(newValue: any) {
+  hourMask(newValue: iTarget) {
     const { callback, hourName } = this.props
 
     var string = newValue.target.value;
@@ -86,7 +87,7 @@ export default class DateField extends React.Component<DateProps> {
     callback(hourName, { target: { value: string } });
   }
 
-  onKeyDown = (e: any) => {
+  onKeyDown = (e:  React.KeyboardEvent<object>) => {
     const { hourValue, hourName, callback} = this.props;
 
     if (hourValue.length === 3 && e.keyCode === 8) {

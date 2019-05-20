@@ -33,7 +33,7 @@ export default class PaymentField extends React.Component<PaymentProps> {
             placeholder={placeholder}
             value={inputValue}
             extraText={"$"}
-            callback={(name: string, item: any) => callback(name, item)}
+            callback={(name: string, item: Event) => callback(name, item)}
             isRequired={value}
             paymentField
           />

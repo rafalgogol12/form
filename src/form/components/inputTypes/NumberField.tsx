@@ -31,7 +31,7 @@ export default class NumberField extends React.Component<InputProps> {
           required={isRequired}
           className={`inputField__input ${extraText ? "inputField__smallInput" : null} ${paymentField && "event__fee"}`}
           value={value}
-          onChange={(newValue) => onlyNumber(name, value, newValue, callback)}
+          onChange={(newValue) => onlyNumber(name, newValue, callback)}
         />
         {extraText &&
           <p>{extraText}</p>

@@ -16,7 +16,7 @@ export interface InputProps {
 
 export interface PaymentProps extends InputProps {
   feeName: string
-  inputValue: any
+  inputValue: string | number
 }
 
 export interface Coordinator {
@@ -35,9 +35,9 @@ export class Coordinator {
 }
 
 export interface MockProps {
-  categories: any
-  responsibles: any
-  titles: any
+  categories: iCategory[]
+  responsibles: Responsible[]
+  titles: TitleObject[]
 }
 
 export interface EventProps {
@@ -95,4 +95,17 @@ export interface TitleObject {
 
 export interface ButtonProps {
   disabled: boolean
+}
+
+export interface iCategory {
+  id: number,
+  name: string
+}
+
+export interface iTarget {
+  target: iValue
+}
+
+export interface iValue {
+  value: string
 }

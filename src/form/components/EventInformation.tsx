@@ -26,9 +26,9 @@ export default class EventInformation extends React.Component<FormProps> {
               placeholder={"Make it short and clear"}
               isRequired
               value={newEvent.title}
-              validationStatement={titleValidStatement(mockData, newEvent)}
+              validationStatement={titleValidStatement(mockData.titles, newEvent)}
               validationError={"This title already exist"}
-              callback={(name: string, item: any) => callbackToSave(name, item)}
+              callback={(name: string, item: Event) => callbackToSave(name, item)}
             />
             <TextAreaField
               labelName={"Description"}
@@ -36,7 +36,7 @@ export default class EventInformation extends React.Component<FormProps> {
               placeholder={"Write about your event, be creative"}
               isRequired
               value={newEvent.description}
-              callback={(name: string, item: any) => callbackToSave(name, item)}
+              callback={(name: string, item: Event) => callbackToSave(name, item)}
               maxLength={maxDescriptionLength}
             />
             <SelectField
@@ -45,7 +45,7 @@ export default class EventInformation extends React.Component<FormProps> {
               placeholder={"Select category (skills, interest, location)"}
               data={mockData.categories}
               value={newEvent.category_id}
-              callback={(name: string, item: any) => callbackToSave(name, item, true)}
+              callback={(name: string, item: Event) => callbackToSave(name, item, true)}
               type="category"
             />
             <PaymentField
@@ -55,7 +55,7 @@ export default class EventInformation extends React.Component<FormProps> {
               placeholder={"Fee"}
               value={newEvent.paid_event}
               inputValue={newEvent.event_fee}
-              callback={(name: string, item: any) => callbackToSave(name, item)}
+              callback={(name: string, item: Event) => callbackToSave(name, item)}
             />
             <NumberField
               labelName={"Reward"}
@@ -63,7 +63,7 @@ export default class EventInformation extends React.Component<FormProps> {
               placeholder={"Number"}
               value={newEvent.reward}
               extraText={"reward points for attendance"}
-              callback={(name: string, item: any) => callbackToSave(name, item)}
+              callback={(name: string, item: Event) => callbackToSave(name, item)}
             />
           </div>
         </div>

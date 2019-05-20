@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FormProps } from '../container/Form';
 import DateField from './inputTypes/DateField';
 import NumberField from './inputTypes/NumberField';
+import { iTarget } from '../../types/Types';
 
 export default class TimeComponent extends React.Component<FormProps> {
   render() {
@@ -20,7 +21,7 @@ export default class TimeComponent extends React.Component<FormProps> {
             hourName={"hour"}
             hourValue={newEvent.hour}
             amValue={newEvent.am_format}
-            callback={(name: string, item: any) => callbackToSave(name,item)}
+            callback={(name: string, item: React.FormEvent<HTMLInputElement> | Event | iTarget) => callbackToSave(name,item)}
           />
           <NumberField
             labelName={"Duration"}
@@ -28,7 +29,7 @@ export default class TimeComponent extends React.Component<FormProps> {
             placeholder={"Number"}
             value={newEvent.duration}
             extraText={"hour"}
-            callback={(name: string, item: any) => callbackToSave(name,item)}
+            callback={(name: string, item: Event) => callbackToSave(name,item)}
           />
         </div>
       </div>
