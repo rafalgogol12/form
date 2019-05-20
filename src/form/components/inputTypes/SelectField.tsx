@@ -2,7 +2,7 @@ import * as React from 'react';
 import { InputProps, Responsible, iCategory } from '../../../types/Types';
 
 interface SelectProps extends InputProps {
-  data: Responsible[] & iCategory[]
+  data: (Responsible | iCategory)[]
   type: string
   selectFromMock?: number
 }
